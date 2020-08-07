@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/CommonLibs.iml" filepath="$PROJECT_DIR$/.idea/modules/CommonLibs.iml" group="CommonLibs" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/CommonView/CommonView.iml" filepath="$PROJECT_DIR$/.idea/modules/CommonView/CommonView.iml" group="CommonLibs/CommonView" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/myapplication/myapplication.iml" filepath="$PROJECT_DIR$/.idea/modules/myapplication/myapplication.iml" group="CommonLibs/myapplication" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/CommonView/CommonView-CommonView.iml" filepath="$PROJECT_DIR$/.idea/modules/CommonView/CommonView-CommonView.iml" group="CommonView/CommonView" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/myapplication/myapplication.iml" filepath="$PROJECT_DIR$/.idea/modules/myapplication/myapplication.iml" group="CommonView/myapplication" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/sdk-CommonView.iml" filepath="$PROJECT_DIR$/.idea/modules/sdk-CommonView.iml" group="CommonView" />
     </modules>
   </component>
 </project>
