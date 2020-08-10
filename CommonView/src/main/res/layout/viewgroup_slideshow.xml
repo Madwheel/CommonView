@@ -3,10 +3,7 @@
     android:id="@+id/rl_slideshow"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_gravity="center_horizontal"
-    android:layout_marginLeft="11dp"
-    android:layout_marginTop="20dp"
-    android:layout_marginRight="11dp">
+    android:layout_gravity="center_horizontal">
 
     <com.youth.banner.Banner
         android:id="@+id/banner"
@@ -17,7 +14,7 @@
         android:id="@+id/ll_point_group"
         android:layout_width="match_parent"
         android:layout_height="12dp"
-        android:layout_gravity="bottom"
+        android:layout_alignParentBottom="true"
         android:background="@drawable/bg_slideshow"
         android:gravity="center_horizontal"
         android:orientation="horizontal" />
