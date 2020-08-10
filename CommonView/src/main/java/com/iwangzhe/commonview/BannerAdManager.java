@@ -26,23 +26,35 @@ import java.util.List;
  */
 public class BannerAdManager {
     private static BannerAdManager mBannerAdManager = null;
+    private String mPageKey;
+    private String mPosKey;
+    private float mCorner;
 
-    public static BannerAdManager getInstance() {
+    public static BannerAdManager getInstance(String pageKey, String posKey) {
         synchronized (BannerAdManager.class) {
             if (mBannerAdManager == null) {
-                mBannerAdManager = new BannerAdManager();
+                mBannerAdManager = new BannerAdManager(pageKey, posKey);
             }
         }
         return mBannerAdManager;
     }
 
-    public void initBannerAd(String pageKey, String posKey) {
-        AdvCommonViewMain.getInstance().getControl().initAdverts(pageKey, posKey);
+    private BannerAdManager(String pageKey, String posKey) {
+        this.mPageKey = pageKey;
+        this.mPosKey = posKey;
     }
 
-    public void loadAd(String pageKey, String posKey, final float corner, final SlideShowView view, final OnSlideClickListener listener) {
-        if (AdvCommonViewMain.getInstance().getControl().isExistAdv(pageKey, posKey)) {
-            showAd(pageKey, posKey, corner, view, listener);
+    public void setCorner(float corner) {
+        this.mCorner = corner;
+    }
+
+    public void initBannerAd() {
+        AdvCommonViewMain.getInstance().getControl().initAdverts(mPageKey, mPosKey);
+    }
+
+    public void loadAd(final SlideShowView view, final OnSlideClickListener listener) {
+        if (AdvCommonViewMain.getInstance().getControl().isExistAdv(mPageKey, mPosKey)) {
+            showAd(mPageKey, mPosKey, mCorner, view, listener);
         } else {
             view.setVisibility(View.GONE);
             AdvCommonViewMain.getInstance().getControl().setAdListener(new IAdListener() {
@@ -52,7 +64,7 @@ public class BannerAdManager {
                         view.post(new Runnable() {
                             @Override
                             public void run() {
-                                showAd(pageKey, posKey, corner, view, listener);
+                                showAd(pageKey, posKey, mCorner, view, listener);
                             }
                         });
                     }
@@ -101,4 +113,5 @@ public class BannerAdManager {
             }
         });
     }
+
 }

@@ -13,23 +13,30 @@ import com.iwangzhe.commonview.adv.model.OnSplashAdListener;
  */
 public class SplashAdManager {
     private static SplashAdManager mSplashAdManager = null;
+    private final String mPosKey;
+    private String mPageKey;
 
-    public static SplashAdManager getInstance() {
+    public static SplashAdManager getInstance(String pageKey, String posKey) {
         synchronized (SplashAdManager.class) {
             if (mSplashAdManager == null) {
-                mSplashAdManager = new SplashAdManager();
+                mSplashAdManager = new SplashAdManager(pageKey, posKey);
             }
         }
         return mSplashAdManager;
     }
 
-    public void initSplashAd(String pageKey, String posKey) {
-        AdvCommonViewMain.getInstance().getControl().initAdverts(pageKey, posKey);
+    private SplashAdManager(String pageKey, String posKey) {
+        this.mPageKey = pageKey;
+        this.mPosKey = posKey;
     }
 
-    public void loadAd(String pageKey, String posKey, Activity activity, OnSplashAdListener listener) {
-        if (AdvCommonViewMain.getInstance().getControl().isExistAdv(pageKey, posKey)) {
-            AdvCommonViewMain.getInstance().getControl().showSplashAd(pageKey, posKey, activity, listener);
+    public void initSplashAd() {
+        AdvCommonViewMain.getInstance().getControl().initAdverts(mPageKey, mPosKey);
+    }
+
+    public void loadAd(Activity activity, OnSplashAdListener listener) {
+        if (AdvCommonViewMain.getInstance().getControl().isExistAdv(mPageKey, mPosKey)) {
+            AdvCommonViewMain.getInstance().getControl().showSplashAd(mPageKey, mPosKey, activity, listener);
         } else {
             if (listener != null) {
                 listener.closeAd();
